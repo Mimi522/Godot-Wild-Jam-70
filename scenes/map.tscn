@@ -25,11 +25,9 @@ mesh = SubResource("BoxMesh_rxshq")
 
 [node name="Player" parent="." instance=ExtResource("1_nvpfh")]
 
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.812481, 0.582988, 0, -0.582988, 0.812481, 0, 4.79399, 5.24315)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.796065, 0.605211, 0, -0.605211, 0.796065, 0, 16.756, 20.7661)
 shadow_enabled = true
-
-[node name="CameraPivot" type="Marker3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.670867, 0.741578, 0, -0.741578, 0.670867, 0, 14.8089, 24.0665)
