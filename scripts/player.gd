@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export var speed = 8
+@export var turn_speed = 8
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_foward", "move_back")
@@ -14,7 +15,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-		$Pivot.basis = Basis.looking_at(direction)
+		$Pivot.rotation.y = lerp_angle($Pivot.rotation.y, atan2(-velocity.x, -velocity.z), delta * turn_speed)
 	
 	move_and_slide()

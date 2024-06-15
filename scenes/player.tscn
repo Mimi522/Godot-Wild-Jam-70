@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7e4p8jmm3wfb"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_itktq"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_et17o"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3mbtb"]
 
@@ -9,17 +9,19 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfgxc"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_itktq")
+script = ExtResource("1_et17o")
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_3mbtb")
+skeleton = NodePath("")
 
 [node name="Head" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(0.6, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 1.5, -0.4)
 mesh = SubResource("BoxMesh_y4dsc")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
