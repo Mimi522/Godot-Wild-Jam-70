@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bybu642ux08yd"]
+[gd_scene load_steps=7 format=3 uid="uid://bybu642ux08yd"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_nxewu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b8dgb"]
 size = Vector3(60, 2, 60)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7msgc"]
+albedo_color = Color(0.18005, 0.320325, 1.44392e-07, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_rxshq"]
+material = SubResource("StandardMaterial3D_7msgc")
 size = Vector3(60, 2, 60)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3mbtb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfgxc"]
 
@@ -21,12 +27,25 @@ shape = SubResource("BoxShape3D_b8dgb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_rxshq")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_nxewu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="Pivot" type="Node3D" parent="Player"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_3mbtb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_rfgxc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.432888, 0.901448, 0, -0.901448, -0.432888, 0, 16.756, 0)
+transform = Transform3D(1, 0, 0, 0, 0.796065, 0.605211, 0, -0.605211, 0.796065, 0, 16.756, 20.7661)
 shadow_enabled = true
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.670867, 0.741578, 0, -0.741578, 0.670867, 0, 14.8089, 24.0665)
