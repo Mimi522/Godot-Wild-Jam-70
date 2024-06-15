@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bybu642ux08yd"]
+[gd_scene load_steps=5 format=3 uid="uid://bybu642ux08yd"]
 
-[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_nxewu"]
+[ext_resource type="PackedScene" uid="uid://7e4p8jmm3wfb" path="res://scenes/player.tscn" id="1_nvpfh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b8dgb"]
 size = Vector3(60, 2, 60)
@@ -11,10 +11,6 @@ albedo_color = Color(0.18005, 0.320325, 1.44392e-07, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_rxshq"]
 material = SubResource("StandardMaterial3D_7msgc")
 size = Vector3(60, 2, 60)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3mbtb"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfgxc"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -27,19 +23,7 @@ shape = SubResource("BoxShape3D_b8dgb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_rxshq")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-script = ExtResource("1_nxewu")
-
-[node name="Pivot" type="Node3D" parent="Player"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_3mbtb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_rfgxc")
+[node name="Player" parent="." instance=ExtResource("1_nvpfh")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.796065, 0.605211, 0, -0.605211, 0.796065, 0, 16.756, 20.7661)
