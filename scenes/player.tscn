@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://7e4p8jmm3wfb"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_stpo6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3mbtb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfgxc"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_stpo6")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_3mbtb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_rfgxc")
